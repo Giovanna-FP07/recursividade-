@@ -1,21 +1,24 @@
 #include <stdio.h>
 
-// soma recursiva dos n primeiros números
-int soma(int n) {
-   if (n == 0) return 0;         // caso base
-   return n + soma(n - 1);       // chamada recursiva
+// potência (x elevado a y)
+int potencia(int base, int expoente) {
+   if (expoente == 0) return 1; // caso base
+   return base * potencia(base, expoente - 1); // chamada recursiva
 }
 
 int main() {
-   int n;
-   
-   printf("Digite um número inteiro positivo: ");
-   scanf("%d", &n);
+   int base, expoente;
 
-   if (n < 0) {
-       printf("Número inválido. Digite apenas inteiros positivos.\n");
+   printf("Digite a base: ");
+   scanf("%d", &base);
+
+   printf("Digite o expoente (inteiro não-negativo): ");
+   scanf("%d", &expoente);
+
+   if (expoente < 0) {
+       printf("Expoente inválido. Digite apenas inteiros não-negativos.\n");
    } else {
-       printf("Soma dos %d primeiros números = %d\n", n, soma(n));
+       printf("%d elevado a %d = %d\n", base, expoente, potencia(base, expoente));
    }
 
    return 0;
